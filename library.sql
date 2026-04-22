@@ -84,6 +84,12 @@ ON i.StudentID = s.StudentID
 WHERE i.IssueDate < DATE_SUB(CURDATE(), INTERVAL 14 DAY)
 AND i.ReturnDate IS NULL;
 
+SELECT b.Category, COUNT(*) AS TotalBorrows
+FROM Books b
+JOIN Issued_Books ib ON b.BookID = ib.BookID
+GROUP BY b.Category
+ORDER BY TotalBorrows DESC;
+
 UPDATE Issued_Books
 SET IssueDate = '2018-01-01'
 WHERE StudentID = 103;
