@@ -84,6 +84,10 @@ ON i.StudentID = s.StudentID
 WHERE i.IssueDate < DATE_SUB(CURDATE(), INTERVAL 14 DAY)
 AND i.ReturnDate IS NULL;
 
+UPDATE Issued_Books
+SET IssueDate = '2018-01-01'
+WHERE StudentID = 103;
+
 SET SQL_SAFE_UPDATES = 0;
 UPDATE Students
 SET Name = CONCAT(Name, ' (Inactive)')
